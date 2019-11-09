@@ -1,7 +1,7 @@
 ================
 Getting Started
 ================
-.. image:: https://github.com/magicbitlk/Magicbit-Arduino/raw/master/Resources/Arduino1.6.4_IDE_small.png
+.. image:: https://github.com/magicbitlk/Magicbit-MicroPython/raw/master/Resources/micropython.png
 
 
 MicroPython is a lean and efficient implementation of the Python 3 programming language that includes a small subset of the Python standard library and is optimised to run on microcontrollers and in constrained environments.
@@ -28,7 +28,7 @@ Powering Up
 
 To check whether drivers are correctly installed open the Ardunio IDE and go the Tools menu. There should be a port (Eg:COM1) shown when plugging Magicbit to the computer as shown below. If not please follow Installation drivers section.
 
-.. image:: https://github.com/magicbitlk/Magicbit-Arduino/raw/master/Resources/Ardunio_port.png
+
 
 
 ********************
