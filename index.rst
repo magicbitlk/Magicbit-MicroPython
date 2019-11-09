@@ -42,17 +42,16 @@ First Project
 - Select ESP from **Mode->ESP**
 - Paste following code on editor and save as main.py
 - Click run button 
-.. code-block:: ruby
+.. code-block:: python
 
-   Some Ruby code.
      from machine import Pin
      import time
      led = Pin(16, Pin.OUT)
      for i in range(10):
-     led.on()
-     time.sleep_ms(500)
-     led.off()
-     time.sleep_ms(500)
+          led.on()
+          time.sleep_ms(500)
+          led.off()
+          time.sleep_ms(500)
 
 - If Green Led on backside of the Magicbit is blinking your have just begun the magic with Magicbit
 
