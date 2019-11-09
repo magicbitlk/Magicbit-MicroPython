@@ -10,29 +10,6 @@ MicroPython is a lean and efficient implementation of the Python 3 programming l
 Magicbit is based on ESP32 which in supported by `MicroPython <http://docs.micropython.org/en/latest/esp32/quickref.html>`_ and `muEditor <https://codewith.mu/>`_
 
 
-.. highlight:: html
-
-The literal blocks are now highlighted as HTML, until a new directive is found.
-
-::
-   <html><head></head>
-   <body>This is a text.</body>
-   </html>
-
-The following directive changes the hightlight language to SQL.
-
-.. highlight:: sql
-
-::
-   SELECT * FROM mytable
-
-.. highlight:: none
-
-From here on no highlighting will be done.
-
-::
-   SELECT * FROM mytable
-
 
 *************************
 Installation Instructions
@@ -65,7 +42,9 @@ First Project
 - Select ESP from **Mode->ESP**
 - Paste following code on editor and save as main.py
 - Click run button 
-.. highlight:: html
+.. code-block:: ruby
+
+   Some Ruby code.
 from machine import Pin
 import time
 
@@ -121,5 +100,5 @@ Accessories
 MicroPython Documentation 
 =========================
 
-Detailed documentation about functions and usage can be found in original MicroPython Documents 
+Detailed documentation about functions and usage can be found in original `MicroPython documentation <https://docs.micropython.org/en/latest/esp32/quickref.html>`_
   
