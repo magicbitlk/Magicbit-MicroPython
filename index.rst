@@ -42,9 +42,7 @@ First Project
 - Select ESP from **Mode->ESP**
 - Paste following code on editor and save as main.py
 - Click run button 
-.. code-block:: ruby
-
-   Some Ruby code.
+.. code-block:: python
 from machine import Pin
 import time
 
