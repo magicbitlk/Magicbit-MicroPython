@@ -29,8 +29,6 @@ Powering Up
 To check whether drivers are correctly installed open the Ardunio IDE and go the Tools menu. There should be a port (Eg:COM1) shown when plugging Magicbit to the computer as shown below. If not please follow Installation drivers section.
 
 
-
-
 ********************
 Installation Drivers (Optional)
 ********************
@@ -46,6 +44,7 @@ First Project
 - Select ESP from **Mode->ESP**
 - Paste following code on editor and save as main.py
 - Click run button 
+.. highlight:: html
 from machine import Pin
 import time
 
