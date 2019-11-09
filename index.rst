@@ -42,11 +42,9 @@ First Project
 - Select ESP from **Mode->ESP**
 - Paste following code on editor and save as main.py
 - Click run button 
-.. code-block::python
-:linenos:
+.. highlight:: python
 from machine import Pin
 import time
-
 led = Pin(16, Pin.OUT)
 for i in range(10):
     led.on()
