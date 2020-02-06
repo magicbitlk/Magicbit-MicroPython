@@ -1,6 +1,4 @@
-================
-Getting Started
-================
+==
 .. image:: https://github.com/magicbitlk/Magicbit-MicroPython/raw/master/Resources/micropython.png
 
 
@@ -9,7 +7,9 @@ MicroPython is a lean and efficient implementation of the Python 3 programming l
 
 Magicbit is based on ESP32 which in supported by `MicroPython <http://docs.micropython.org/en/latest/esp32/quickref.html>`_ and `muEditor <https://codewith.mu/>`_
 
-
+================
+Getting Started
+==============
 
 *************************
 Installation Instructions
