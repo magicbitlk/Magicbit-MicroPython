@@ -14,7 +14,7 @@ Getting Started
 *************************
 Installation Instructions
 *************************
-- Download and install `https://thonny.org/`_
+- Download and install `https://thonny.org/`
 - Open Magicbit Uploader and select port
 - Update MicroPython firmware using Magicbit Uploader
 - Select ESP MicroPython from Mode
