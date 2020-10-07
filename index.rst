@@ -15,9 +15,12 @@ Getting Started
 Installation Instructions
 *************************
 - Download and install `https://thonny.org/`
-- Open Magicbit Uploader and select port
-- Update MicroPython firmware using Magicbit Uploader
-- Select ESP MicroPython from Mode
+- Open the Magicbit Utility and connect the Magicbit Board to the PC
+- Choose the port connected to the device and choose Micropython as the platform
+- Click 'Update Firmware'
+- Open Thonny IDE 
+- Click Run > Select Interpreter
+- Choose Micropython(ESP32) from the first dropdown box and leave the other dropdown box as it is.
 
 ***********
 Powering Up
@@ -38,10 +41,8 @@ Magicbit has CH340 chip as USB-Serial converter which driver already packaged wi
 First Project
 *************
 
-- Open muEditor if not opened already.
-- Select ESP from **Mode->ESP**
-- Paste following code on editor and save as main.py
-- Click run button 
+- Open Thonny IDE
+- Paste following code on editor and click save as
 .. code-block:: python
 
      from machine import Pin
@@ -52,14 +53,9 @@ First Project
           time.sleep_ms(500)
           led.off()
           time.sleep_ms(500)
-
+- Click 'Micropython Device' and choose file name as 'boot.py'
+-Click Run (Green Arrow) on the IDE
 - If Green Led on backside of the Magicbit is blinking your have just begun the magic with Magicbit
-
-*********
-Run Modes
-*********
-- **Live Mode** - Edited code can be run by clicking run button. Code only works when editor opened
-- **Upload Mode** - Save file as main.py. Click file button and drag main.py from **Files on your computer** to **Files on the device**. Code then run without editor.
 
 ========
 Hardware
