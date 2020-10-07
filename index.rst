@@ -75,6 +75,18 @@ Specifications
 - **Other**- Dual Motor Driver, Li-Ion Charger
 - **Connectivity**- USB, WiFi, Bluetooth
 
+============
+Example 2 : Reading the state of a push button
+============
+
+Introduction
+===============
+    In this example you are learning how read a digital input from something like a button & use it to turn on and off a LED or any other digital device.
+
+Learning Outcomes
+===============    
+
+
 *****************
 Features
 *****************
