@@ -14,7 +14,7 @@ Getting Started
 *************************
 Installation Instructions
 *************************
-- Download and install `https://thonny.org/`
+- Download and install `<http://thonny.org/>`_
 - Open the Magicbit Utility and connect the Magicbit Board to the PC
 - Choose the port connected to the device and choose Micropython as the platform
 - Click 'Update Firmware'
