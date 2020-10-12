@@ -82,6 +82,178 @@ Example 2 : Reading the state of a push button
 Introduction
 ===============
     In this example you are learning how read a digital input from something like a button & use it to turn on and off a LED or any other digital device.
+ Learning Outcomes
+---------------
+
+From this example, you’ll get an understanding about,
+
+- IF-ELSE conditions
+- Variables
+
+Components
+------------------
+ Magicbit
+
+Theory
+---------------
+Microcontroller recognizes the signal as 1(HIGH) when the signal is close to 3.3v (or 5v depending on the microcontroller) and recognizes as 0(LOW) when the signal is close to 0v. This reading can be used in the program to do various things.
+
+Methodology
+------------------
+Magicbit is equipped with two onboard push buttons. Let us select the push button which is wired to D34. Buttons on the board are pulled up internally (to learn more about pullups/pulldowns follow this link), which means when the button is not pressed the status of the button is 1(HIGH), & when the button is pressed the status of the button is 0(LOW).
+
+.. image:: https://github.com/Ruwatech/docu-Magicbit/blob/master/Resources/image7.png?raw=true
+
+Also like in the previous example we need to select a LED to indicate the change, lets select RED LED which is wired to pin D27.
+
+First we set the input output configurations of the Button and the LED using Pin(), in this case button is an INPUT, LED is an OUTPUT. 
+
+Then we can use the variable as the condition of the if block, and if the button is pressed, the bulb should turn on, and the button is not pressed the light should turn off.
+
+
+Coding
+------
+
+ .. code-block:: py
+
+     from machine import Pin
+
+     led = Pin(16, Pin.OUT)
+     btn = Pin(34, Pin.IN)
+
+     while True:
+          if btn() == 0:
+               led.on()
+          else:
+               led.off() 
+Explanation
+------------------
+
+**IF/ELSE:** Used to evaluate a digital condition, we can put a digital logic condition in then parenthesis. If the condition is true, it executes the code block immediately below it, if the condition is false it executes the code block in the else block.
+
+ .. code-block:: py
+
+     if (condition)
+        // Do if condition is true
+     else
+        // Do if condition is false
+
+**Note: Write a code to toggle an LED in the button press. LED turns on when button pressed & released, LED turns off when button is pressed & released again. (Hint: Make use of variables to ‘remember’ the state of the button press).**
+
+Example 3: Working with Analog Write
+====================================
+
+Introduction
+---------------
+     In this example you are learning how to turn on and off a LED or any other actuator which can be controlled by a digital output such as relay, bulb, motor.
+
+Learning Outcomes
+-------------------
+ From this example, you'll get an understanding about,
+
+-  Pulse Width Modulation
+
+Components
+------------
+
+- Magicbit
+
+Theory
+-----------
+
+To change the brightness of a LED we could change the voltage the LED is supplied with, but in a microcontroller, ability to change the voltage (converting a digital number to an analog voltage) is limited, so a method called PWM (Pulse Width Modulation) is used. What this does is pulsing on and off the pin in a high frequency. The length of the pulses creates the perception of brightness. 
+
+ Duty cycle is a term used to describe the ratio between on and off times.
+
+ .. image:: https://github.com/Ruwatech/docu-Magicbit/blob/master/Resources/image8.png?raw=true
+
+ In this example higher Duty cycle gives higher brightness & lower duty cycle gives lower brightness.
+
+Methodology
+-------------
+ Lets select green LED (which is wired to D16). We will use a for loop to generate the duty cycle (0 - 0% duty, 255-100% duty). And also to generate 255 cycles.
+
+Coding
+------
+ .. code-block:: py
+
+ from machine import Pin,PWM
+import time
+LED=Pin(16, Pin.OUT)
+pwm = PWM(LED)
+
+pwm.freq(50)
+while True:
+	for i in range (0,256,1):
+		pwm.duty(i)
+		time.sleep_ms(500)
+
+Explanation
+------------
+ **for i in range (0,256,1):** There are 3 parameters in a for loop, first parameter we are defining the starting value for the loop. Second parameter specifies the ending value for the loop, third parameter specifies the change happens to the variable in each cycle, in this i is incrementd by 1. 
+
+ **pwm.duty(i)** You can input the pin number you need to do pwm and then the pwm value you need to give to that pin. This assigns the corresponding duty cycle to the pin.
+
+
+**Note This example we have coded to increase the brightness, write a code to do the opposite of that, to fade the brightness of the led, & put both effects together to create a beautiful fade & light up effect.**
+
+
+
+Example 4: Using Serial Protocol
+=================================
+
+Introduction
+------------
+     In this example you are learning to use serial communication function.
+
+Learning Outcomes
+-----------------
+
+ From this example, you'll get an understanding about,
+
+-  Serial Protocol usage between Magicbit & the PC
+
+
+Components
+----------
+
+- Magicbit
+- Computer with arduino installed
+
+Theory
+-------
+ In microcontroller programming, communication between devices is essential. There are hundreds of protocols available, but most common & easy to use is Serial Protocol. Commonly used to communicate information between a microcontroller and a computer.
+
+ .. image:: https://github.com/Ruwatech/docu-Magicbit/blob/master/Resources/image3.png?raw=true
+
+Methodology
+-----------
+   
+ We configure a button as the 2nd example (D34 is used). Then we initialize serial communication between the computer and Magicbit. 
+ After that in the loop section if condition check if the button is pressed. If pressed, it prints “Button Pressed” on the serial console.  
+
+ You could use the serial monitor window of arduino IDE to view the serial output
+
+ .. image:: https://github.com/Ruwatech/docu-Magicbit/blob/master/Resources/image5.png?raw=true
+ 
+ Then the serial console appears (you have to select the serial port number correctly, follow this link to learn how to). 
+
+ .. image:: https://github.com/Ruwatech/docu-Magicbit/blob/master/Resources/image6.png?raw=true
+
+ **1:** You can type in stuff here & hit enter to send data to Magicbit
+ 
+ **2:** This area shows the data coming from Magicbit
+ 
+ **3:** From this menu you have to select a common baudrate between the computer and the magic    bit.
+
+
+---------
+**Note: do the same example using Serial.print(), observe the difference.  Create a button press counter, which displays the button press count on the serial console of arduino IDE.**
+
+
+
+
+
 
 Learning Outcomes
 ===============    
