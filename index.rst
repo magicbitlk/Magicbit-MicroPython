@@ -176,21 +176,19 @@ Methodology
 Coding
 ------
  .. code-block:: py
-
  from machine import Pin,PWM
-import time
-LED=Pin(16, Pin.OUT)
-pwm = PWM(LED)
-
-pwm.freq(50)
-while True:
+ import time
+ LED=Pin(16, Pin.OUT)
+ pwm = PWM(LED)
+ pwm.freq(50)
+ while True:
 	for i in range (0,256,1):
 		pwm.duty(i)
 		time.sleep_ms(500)
 
 Explanation
 ------------
- **for i in range (0,256,1):** There are 3 parameters in a for loop, first parameter we are defining the starting value for the loop. Second parameter specifies the ending value for the loop, third parameter specifies the change happens to the variable in each cycle, in this i is incrementd by 1. 
+ **for i in range (0,256,1):** There are 3 parameters in a for loop, first parameter we are defining the starting value for the loop. Second parameter specifies the ending value for the loop, third parameter specifies the change happens to the variable in each cycle, in this i is incrementd by one. 
 
  **pwm.duty(i)** You can input the pin number you need to do pwm and then the pwm value you need to give to that pin. This assigns the corresponding duty cycle to the pin.
 
@@ -199,57 +197,68 @@ Explanation
 
 
 
-Example 4: Using Serial Protocol
-=================================
+Example 4: Reading an Analog Signal
+===================================
 
 Introduction
-------------
-     In this example you are learning to use serial communication function.
+-------------
+
+     In this example you are learning to read an analog sensor.
 
 Learning Outcomes
------------------
+------------------
 
  From this example, you'll get an understanding about,
 
--  Serial Protocol usage between Magicbit & the PC
+-  Analog Read
 
 
 Components
-----------
+-----------
 
 - Magicbit
-- Computer with arduino installed
 
 Theory
 -------
- In microcontroller programming, communication between devices is essential. There are hundreds of protocols available, but most common & easy to use is Serial Protocol. Commonly used to communicate information between a microcontroller and a computer.
 
- .. image:: https://github.com/Ruwatech/docu-Magicbit/blob/master/Resources/image3.png?raw=true
+ In real world most of the signals we encounter are analog signals (temperature, air pressure, velocity), they are continuous. But computers work on digital domain, to interact between the worlds, representing an analog signal in the digital domain is important. 
+ (to read more about analog to digital conversation, follow this link)
 
 Methodology
+------------
+
+ For this example we use the potentiometer on the Magicbit board, which is connected to pin, D39. It generates a voltage between 0 and 3.3V according to the angle of the potentiometer. 
+
+ .. image:: https://github.com/Ruwatech/docu-Magicbit/blob/master/Resources/image1.png?raw=true
+
+ We read the analog signal and store it in an int type variable(0v= 0 analog value, 3.3v = 4096 analog value), sensorValue, later, we use this value to light up the  red LED(D27) if the analog value exceeds than 2048.
+
+Coding
+------
+ .. code-block:: py
+from machine import Pin,ADC
+
+
+LED=Pin(16,Pin.OUT)
+
+adc=ADC(Pin(39))
+while True:
+	sensorValue=adc.read()
+	if sensorValue>2048:
+		LED.off()
+	else:
+		LED.on()
+
+
+
+Explanation
 -----------
-   
- We configure a button as the 2nd example (D34 is used). Then we initialize serial communication between the computer and Magicbit. 
- After that in the loop section if condition check if the button is pressed. If pressed, it prints “Button Pressed” on the serial console.  
+ **adc.read():** this reads and assigns the corresponding analog value to the left.
 
- You could use the serial monitor window of arduino IDE to view the serial output
-
- .. image:: https://github.com/Ruwatech/docu-Magicbit/blob/master/Resources/image5.png?raw=true
- 
- Then the serial console appears (you have to select the serial port number correctly, follow this link to learn how to). 
-
- .. image:: https://github.com/Ruwatech/docu-Magicbit/blob/master/Resources/image6.png?raw=true
-
- **1:** You can type in stuff here & hit enter to send data to Magicbit
- 
- **2:** This area shows the data coming from Magicbit
- 
- **3:** From this menu you have to select a common baudrate between the computer and the magic    bit.
-
-
+Activity
 ---------
-**Note: do the same example using Serial.print(), observe the difference.  Create a button press counter, which displays the button press count on the serial console of arduino IDE.**
 
+**Note: Do the same example using the LDR on the board (D36)**
 
 
 
