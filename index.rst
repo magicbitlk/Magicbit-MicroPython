@@ -342,25 +342,25 @@ Methodology
 
 Coding
 ---------
- .. code-block:: py
+.. code-block:: py
 
-from machine import Pin, I2C
-import ssd1306
-from time import sleep
+    from machine import Pin, I2C
+    import ssd1306
+    from time import sleep
 
-# Magicbit Pin assignment 
-i2c = I2C(-1, scl=Pin(22), sda=Pin(21))
+    # Magicbit Pin assignment 
+    i2c = I2C(-1, scl=Pin(22), sda=Pin(21))
 
 
-oled_width = 128
-oled_height = 64
-oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
+    oled_width = 128
+    oled_height = 64
+    oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
 
-oled.text('Hello, World 1!', 0, 0)
-oled.text('Hello, World 2!', 0, 10)
-oled.text('Hello, World 3!', 0, 20)
+    oled.text('Hello, World 1!', 0, 0)
+    oled.text('Hello, World 2!', 0, 10)
+    oled.text('Hello, World 3!', 0, 20)
 
-oled.show()
+    oled.show()
 
 Explanation
 -----------
@@ -378,7 +378,7 @@ Explanation
              - 0 = black
              - 1 = white
 
- **oled.show():** To print on the screen.S1e2n3u4d5a617#
+ **oled.show():** To print on the screen.
 
 **Note:: Make a program to display the ADC value of the potentiometer on the OLED display.** 
 
