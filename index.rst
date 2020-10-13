@@ -571,23 +571,7 @@ Almost all door and window sensors use a "reed switch" to determine when a prote
 
 Figure 6: Working principal of magnetic door sensor
 
-
-4.4 Methodology
-----------------
-
-First, take the Magicbit door sensor and connect it with the Magicbit core. In this example, we use 32nd pin of the Magicbit to implement this. After connecting the door sensor upload the following code to your Magicbit.
- 
-.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/TiltSensor/Screenshot_1.png?raw=true
-
-Figure 7: Door open state
-
-.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/TiltSensor/Screenshot_2.png?raw=true
-
- 
-Figure 8: Door closed state
-
-
-4.5 Coding
+4.4 Coding
 -----------
 
 .. code-block:: py
@@ -603,7 +587,7 @@ Figure 8: Door closed state
     
    
 
-4.6 Explanation
+4.5 Explanation
 ----------------
 
 **door_sens:** Defined input pin for door sensor
@@ -639,25 +623,7 @@ Figure 9:PWM Signals for various angles
 
 
 
-5.4 Methodology
----------------
-
-For implement this project ESP32Servo library should be installed. Click here to download ESP32Servo library. Then install the library for Arduino IDE.
-Follow these steps to install ESP32Servo library.
- 
-.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/Servo/1step.png?raw=true
-
-Figure 10: Iclude library -> Add.ZIP library
-
-.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/Servo/Screenshot_1.png?raw=true
- 
-Figure 11: Select ZIP file
-
-
-Then connect the magic servo motor to Magicbit.
-After completed those steps, upload following code for your Magicbit.
-
-5.5 Coding
+5.4 Coding
 -----------
 .. code-block:: py
 
