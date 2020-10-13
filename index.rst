@@ -134,9 +134,9 @@ Explanation
  .. code-block:: py
 
      if (condition)
-        // Do if condition is true
+        # Do if condition is true
      else
-        // Do if condition is false
+        # Do if condition is false
 
 **Note: Write a code to toggle an LED in the button press. LED turns on when button pressed & released, LED turns off when button is pressed & released again. (Hint: Make use of variables to ‘remember’ the state of the button press).**
 
@@ -261,6 +261,130 @@ Activity
 ---------
 
 **Note: Do the same example using the LDR on the board (D36)**
+
+Example 6: Generating Tones
+=============================
+
+Introduction
+-------------
+
+     In this example you are learning to generate a tone using the onboard buzzer on the Magicbit.
+
+Learning Outcomes
+------------------
+
+ From this example, you'll get an understanding about,
+
+-  genearting square waves
+
+Components
+-----------
+
+- Magicbit
+
+Theory
+-------
+ Piezo buzzers are commonly used in embedded systems to give audible tones. It works well with a square wave as input.
+ 
+Methodology
+-----------
+ For this example we use the piezo buzzer wired to pin 25 of the Magicbit. 
+
+ .. image:: https://github.com/Ruwatech/docu-Magicbit/blob/master/Resources/image2.png?raw=true
+
+Coding
+-------
+ .. code-block:: py
+
+  from machine import Pin,PWM
+  import time
+  BUZZER=Pin(25, Pin.OUT)
+  while True:
+  	BUZZER.on()
+        time.sleep_ms(300)
+        BUZZER.off()
+        time.sleep_ms(300)
+    
+Explanation
+-----------
+ There is no function for micropython to generate a square wave to activate the buzzer. Therefore we should create a square wave to replicate the tone function used in   arduino.
+ 
+Activity
+--------
+**Note:: Create a program that plays one frequency when one push button on the board pressed, and another frequency when the other push button when pressed.**
+
+Example 7: Using the onboard OLED Screen
+=========================================
+
+Introduction
+------------
+     Color OLED screen on Magicbit can display text as well as simple logos & images.
+
+Learning Outcomes
+------------------
+
+ From this example, you'll get an understanding about,
+
+-  Using Adafruit OLED library
+
+Components
+-----------
+
+- Magicbit
+
+Theory
+---------
+ Magicbit has a 0.96" OLED Screen which can be communicated with from I2C protocol. The display has the address, **0x3c**.
+
+Methodology
+-------------
+ Adafruit OLED library(Adafruit_SSD1306) is used to handle the LCD, its important to install those libraries beforehand. First we create the content we need to print onto the screen and then use display.display command to update the screen.
+
+Coding
+---------
+ .. code-block:: py
+
+from machine import Pin, I2C
+import ssd1306
+from time import sleep
+
+# Magicbit Pin assignment 
+i2c = I2C(-1, scl=Pin(22), sda=Pin(21))
+
+
+oled_width = 128
+oled_height = 64
+oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
+
+oled.text('Hello, World 1!', 0, 0)
+oled.text('Hello, World 2!', 0, 10)
+oled.text('Hello, World 3!', 0, 20)
+
+oled.show()
+
+Explanation
+-----------
+
+ **oled_width , oled_height :** Define the OLED width and height on the following variables:
+
+ **oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c) :** create an SSD1306_I2C object called oled. This object accepts the OLED width, height, and the I2C pins you’ve defined earlier.S1e2n3
+
+ **oled.text():** The text() method accepts the following arguments (in this order):
+
+     - Message: must be of type String
+     - X position: where the text starts
+     - Y position: where the text is displayed vertically
+     - Text color: it can be either black or white. The default color is white and this parameter is optional.
+             - 0 = black
+             - 1 = white
+
+ **oled.show():** To print on the screen.S1e2n3u4d5a617#
+
+**Note:: Make a program to display the ADC value of the potentiometer on the OLED display.** 
+
+
+
+
 
 
 
