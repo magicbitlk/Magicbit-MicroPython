@@ -383,7 +383,114 @@ Explanation
 **Note:: Make a program to display the ADC value of the potentiometer on the OLED display.** 
 
 
+01. Proximity Sensor
+====================
 
+1.1 Introduction
+-----------------
+In this example, you are learning how to use proximity sensor. This sensor (TCRT5000) uses reflection on a surface. It is known that a white and polished surface reflects large percentage of light and a black and rough surface absorbs (not reflect) large percentage of light that incidence on the surface.
+
+**Learning outcomes:**
+
+•	Reflection theory using with Infrared radiations.
+•	Turning physical parameter to an analog electric signal.
+
+1.2 Components
+---------------
+
+•	Magicbit
+•	Magicbit proximity sensor
+
+1.3 Theory
+-----------
+
+A proximity sensor is a sensor able to detect the presence of nearby objects without any physical contact. A proximity sensor often emits an electromagnetic field or a beam of electromagnetic radiation (infrared, for instance), and looks for changes in the field or return signal.
+
+**Features:**
+ 
+•	Supply voltage 3.3V ~ 5V
+•	Detect distance 1mm ~ 8mm
+
+
+1.4 Methodology
+----------------
+
+1. As the first step, you should connect a Magicbit proximity sensor to Magicbit core board. 
+
+2. For this example, the proximity sensor was connected to the upper left connector of the Magicbit core board.
+
+3. Then connect the Magicbit to your pc and upload the code.
+
+1.5 Coding
+-----------
+.. code-block:: py
+
+  from machine import Pin, ADC
+  from time import sleep
+
+  prox = ADC(Pin(34))
+  prox.atten(ADC.ATTN_11DB)       #Full range: 3.3v
+
+  while True:
+     prox_value = prox.read()
+     print(prox_value)
+     sleep(0.1)
+     
+
+02. Tilt Sensor
+================
+
+2.1 Introduction
+-----------------
+In this example, you are learning how to use Tilt sensor. Tilt sensor produces digital outputs such as high and low. Therefore, tilt sensor works as a switch that gives on and off states.
+
+**Learning outcomes**
+
+•	Digital read and print output 
+•	Working principle of the tilt sensor
+
+2.2 Components
+--------------
+•	Magicbit 
+•	Magicbit Tilt Sensor
+
+2.3 Theory
+-----------
+
+When the device gets power and is in its upright position, then the rolling ball settle at the bottom of the sensor to form an electrical connection between the two end terminals of the sensor.
+
+.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/TiltSensor/43.jpg?raw=true
+
+ 
+Figure 3: Working priciple of tilt sensor [1]
+
+2.4 Methodology
+----------------
+
+As the first step, you should connect a Magicbit tilt sensor to Magicbit core board. For this, you can use one side connector from four side connectors of the Magicbit core board or if you want to extend the length the connection, you can use jumper wires.
+For this example, the tilt sensor was connected to the upper left connector of the Magicbit core board.
+Then connect the Magicbit to your pc and upload the code.
+You can get outputs.
+
+2.5 Coding
+-----------
+.. code-block:: py
+
+    from machine import Pin
+    import time
+
+    Tilt = Pin(32, Pin.IN)
+
+    while True:
+       print(Tilt.value())
+       time.sleep_ms(1000)	
+
+
+2.6 Explanation
+----------------
+
+**Tilt = Pin(32, Pin.IN):** Defining input pin
+**Tilt.value()** Read the data input of configured data pin.
 
 
 
