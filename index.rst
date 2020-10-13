@@ -493,6 +493,300 @@ You can get outputs.
 **Tilt.value()** Read the data input of configured data pin.
 
 
+03. Flame Sensor
+================
+
+3.1 Introduction
+-----------------
+
+A flame sensor module consists of a flame sensor (IR receiver), resistor, capacitor, potentiometer, and comparator LM393 in an integrated circuit. It can detect infrared light with a wavelength ranging from 700nm to 1000nm.
+
+**Learning outcomes:**
+
+•	Using flame sensor to identify infrareds/heat bodies
+
+3.2 Components
+---------------
+
+•	Magicbit
+•	Magicbit Flame Sensor
+
+3.3 Theory
+-----------
+
+IR receiver mainly use with a IR Transmitter, not only for identify heat bodies. IR light is emitted by the sun, light bulbs, and anything else that produces heat. That means there is a lot of IR light noise all around us. To prevent this noise from interfering with the IR signal, a signal modulation technique is used. In IR signal modulation, an encoder on the IR remote converts a binary signal into a modulated electrical signal. This electrical signal is sent to the transmitting LED. The transmitting LED converts the modulated electrical signal into a modulated IR light signal. The IR receiver then demodulates the IR light signal and converts it back to binary before passing on the information to a microcontroller.In here we use this sensor for identify flames.
+
+3.4 Methodology
+----------------
+
+As the first step, you should connect a Magicbit flame sensor to Magicbit core board. For this, you can use one of the four side cnnectors of the Magicbit core board or if you want to extend the length the connection, you can use jumper wires.
+For this example, the flame sensor was connected to the upper left connector of the Magicbit core board.
+Then connect the Magicbit to your pc and upload the code.
+
+3.5 Coding
+-----------
+.. code-block:: py
+
+   from machine import Pin
+   import time
+
+   flame = ADC(Pin(32))
+   flame.atten(ADC.ATTN_11DB)       #Full range: 3.3v
+
+   while True:
+     flame_value = flame.read()
+     print(flame_value)
+     sleep(0.1)
+
+3.6 Explanation
+----------------
+
+Here we have used **print** , because we have to measure a range make the decision that there is a flame or not.
+
+
+04. DOOR Sensor
+================
+
+4.1 Introduction
+-----------------
+
+A magnetic contact switch is a reed switch encased in a plastic shell so that you can easily apply them in a door, a window or a drawer to detect if the door is open or closed.
+
+**Learning outcomes:**
+
+•	Using magnetic door sensor.
+
+4.2 Components
+---------------
+
+•	Magicbit
+•	Magicbit Magnetic door sensor
+
+4.3 Theory
+----------
+
+Almost all door and window sensors use a "reed switch" to determine when a protected area has been breached.  A reed switch consists of a set of electrical connectors placed slightly apart. When a magnetic field is placed parallel to the electrical connectors, it pulls them together, closing the circuit. Door sensors have one reed switch and one magnet, creating a closed circuit. If someone opens an armed door or window, the magnet is pulled away from the switch, which breaks the circuit and triggers an event.  [2]
+
+.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/DoorSensor/entry_sensor_reed_switch_small.png?raw=true
+
+Figure 6: Working principal of magnetic door sensor
+
+
+4.4 Methodology
+----------------
+
+First, take the Magicbit door sensor and connect it with the Magicbit core. In this example, we use 32nd pin of the Magicbit to implement this. After connecting the door sensor upload the following code to your Magicbit.
+ 
+.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/TiltSensor/Screenshot_1.png?raw=true
+
+Figure 7: Door open state
+
+.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/TiltSensor/Screenshot_2.png?raw=true
+
+ 
+Figure 8: Door closed state
+
+
+4.5 Coding
+-----------
+
+.. code-block:: py
+
+    from machine import Pin
+    import time
+
+    door_sens = Pin(32, Pin.IN)
+
+    while True:
+       print(door_sens.value())
+       time.sleep_ms(1000)
+    
+   
+
+4.6 Explanation
+----------------
+
+**door_sens:** Defined input pin for door sensor
+
+
+05. Magicbit Servo
+==================
+
+5.1 Introduction
+----------------
+
+A servomotor is an electrical device, which can push or rotate an object with great precision. If you want to rotate an object at some specific angles or distance, then you use servomotor. It is just made up of simple motor, which run through servomechanism.
+
+**Leaning outcome:**
+
+•	Using servo motor with Magicbit
+
+5.2 Components
+---------------
+
+•	Magicbit
+•	Servomotor
+
+5.3 Theory
+-----------
+
+Servo motor works on the PWM (Pulse Width Modulation) principle, which means its angle of rotation, is controlled by the duration of pulse applied to its control PIN. Servomotor is made up of DC motor, which is controlled by a variable resistor (potentiometer), and some gears. Servomotors control position and speed very precisely. Now a potentiometer can sense the mechanical position of the shaft. Hence, it couples with the motor shaft through gears. The current position of the shaft is converted into electrical signal by potentiometer, and is compared with the command input signal. In modern servomotors, electronic encoders or sensors sense the position of the shaft.
+A pulse of 1ms will move the shaft anticlockwise at -90 degree, a pulse of 1.5ms will move the shaft at the neutral position that is 0 degree and a pulse of 2ms will move shaft clockwise at +90 degree. [3]
+
+.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/Servo/Untitled-2-300x206.png?raw=true
+
+Figure 9:PWM Signals for various angles
+
+
+
+5.4 Methodology
+---------------
+
+For implement this project ESP32Servo library should be installed. Click here to download ESP32Servo library. Then install the library for Arduino IDE.
+Follow these steps to install ESP32Servo library.
+ 
+.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/Servo/1step.png?raw=true
+
+Figure 10: Iclude library -> Add.ZIP library
+
+.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/Servo/Screenshot_1.png?raw=true
+ 
+Figure 11: Select ZIP file
+
+
+Then connect the magic servo motor to Magicbit.
+After completed those steps, upload following code for your Magicbit.
+
+5.5 Coding
+-----------
+.. code-block:: py
+
+	import pyb
+
+	s1 = pyb.Servo(1)   # create a servo object on position P7
+	s2 = pyb.Servo(2)   # create a servo object on position P8
+
+	s1.angle(45)        # move servo 1 to 45 degrees
+	s2.angle(0)         # move servo 2 to 0 degrees
+
+	# move servo1 and servo2 synchronously, taking 1500ms
+	s1.angle(-60, 1500)
+	s2.angle(30, 1500)
+
+
+06. Motion Sensor
+=================
+
+6.1 Introduction
+----------------
+
+A motion sensor (or motion detector) is an electronic device that is designed to detect and measure movement. Motion sensors are used primarily in home and business security systems. PIR Sensor is short for passive infrared sensor, which applies for projects that need to detect human or particle movement in a certain range, and it can be referred as PIR (motion) sensor, or IR sensor. [4]
+
+**Learning outcomes:**
+
+•	Using motion sensor
+•	Theoretical background of using Infrared waves in motion sensor
+
+6.2 Components
+---------------
+•	Magicbit
+•	Magicbit Motion sensor
+
+6.3 Theory
+------------
+
+When a human or animal body will get in the range of the sensor, it will detect a movement because the human or animal body emits heat energy in a form of infrared radiation. That is where the name of the sensor comes from, a Passive Infra-Red sensor. In addition, the term “passive” means that sensor is not using any energy for detecting purposes; it just works by detecting the energy given off by the other objects.
+
+.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/MotionSensor/Screenshot_3.png?raw=true
+
+Figure 12: PIR Sensor –Howtomechatronics.com
+
+
+6.4 Methodology
+---------------
+
+First, connect the motion sensor to your Magicbit and upload the following code to your Magicbit. In this demonstration like other demonstrations, we use D32 as the data pin.
+
+6.5 Coding
+------------
+.. code-block:: py
+
+    from machine import Pin
+    import time
+
+    motion_sens = Pin(32, Pin.IN)
+
+    while True:
+       print(motion_sens.value())
+       time.sleep_ms(1000)
+
+
+6.6 Explanation
+----------------
+
+When some human being is detected by the motion sensor the output willdisplay ‘1’ otherwise ‘0’.
+
+07. RGB Module
+===============
+
+7.1 Introduction
+-----------------
+
+An RGB LED has 4 pins, one for each color (Red, Green, Blue) and a common cathode. It has three different color-emitting diodes that can be combined to create all sorts of color.
+R- Red
+G- Green
+B- Blue
+
+**Learning outcomes:**
+
+•	Using a RGB led and changing its color as the required
+
+7.2 Components
+---------------
+
+•	Magicbit
+•	RGB module
+
+7.3 Theory
+------------
+
+The RGB color model is an additive color model in which red, green, and blue light are added together in various ways to reproduce a broad array of colors. The name of the model comes from the initials of the three additive primary colors, red, green, and blue.
+The main purpose of the RGB color model is for the sensing, representation, and display of images in electronic systems, such as televisions and computers, though it has also been used in conventional photography. Before the electronic age, the RGB color model already had a solid theory behind it, based in human perception of colors [5].
+
+7.4 Methodology
+----------------
+
+For this demonstration, you have to install Adafruit NeoPixel library. For more details Click here.
+As usually connect the RGB module to your Magicbit, for this, we take data pin as pin 32.
+After connect the RGB module to the Magicbit, connect it to your pc and upload following code.
+
+7.5 Coding
+-----------
+
+.. code-block:: c
+
+    #include <Adafruit_NeoPixel.h>
+    #define LED_PIN  32
+    #define LED_COUNT 1
+    Adafruit_NeoPixel LED(1,32, NEO_RGB + NEO_KHZ800);
+
+    void setup() {
+      LED.begin();
+      LED.show();
+    }
+
+    void loop() {
+      LED.setPixelColor(0, 255, 0, 255); // you can change these arguments and make your own designs using                 those commands. Follow the link in our documentary for more details.
+      LED.show();
+    }
+
+
+7.6 Explanation
+----------------
+
+Adafruit NeoPixel library is for LED strips. However, it can be used for single RGB LED as your requirement (like this example).
+‘LED.begin & LED.show’ are functions of Adafruit NeoPixel library for display the color on RGB led.
+‘LED.setPixelColor’ is use to color led brightness values. (Eg:- 255 – maximum brightness & 0 – lowest brightness)
 
 
 
