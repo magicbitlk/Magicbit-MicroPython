@@ -763,32 +763,101 @@ After connect the RGB module to the Magicbit, connect it to your pc and upload f
 7.5 Coding
 -----------
 
-.. code-block:: c
+.. code-block:: py
 
-    #include <Adafruit_NeoPixel.h>
-    #define LED_PIN  32
-    #define LED_COUNT 1
-    Adafruit_NeoPixel LED(1,32, NEO_RGB + NEO_KHZ800);
+	from microbit import *
+	from random import randint
+	
+	button_a=Pin(34, Pin.IN)
+	button_b=Pin(35, Pin.IN)
+	redVal = randint(0, 255)
+	greenVal = 0
+	blueVal = 0
 
-    void setup() {
-      LED.begin();
-      LED.show();
-    }
+	while True:
+    	if button_a.is_pressed():
+        	redVal = 0
+        	blueVal = 0
+        	greenVal = randint(0, 255)
+        	pin0.write_analog(redVal)
+        	pin1.write_analog(greenVal)
+        	pin2.write_analog(blueVal)
+    	elif button_b.is_pressed():
+        	redVal = 0
+        	blueVal = randint(0, 255)
+        	greenVal = 0
+        	pin0.write_analog(redVal)
+        	pin1.write_analog(greenVal)
+        	pin2.write_analog(blueVal)
+    	else:
+        	pin0.write_analog(redVal)
+        	pin1.write_analog(greenVal)
+        	pin2.write_analog(blueVal)
 
-    void loop() {
-      LED.setPixelColor(0, 255, 0, 255); // you can change these arguments and make your own designs using                 those commands. Follow the link in our documentary for more details.
-      LED.show();
-    }
 
 
 7.6 Explanation
 ----------------
 
-Adafruit NeoPixel library is for LED strips. However, it can be used for single RGB LED as your requirement (like this example).
-‘LED.begin & LED.show’ are functions of Adafruit NeoPixel library for display the color on RGB led.
-‘LED.setPixelColor’ is use to color led brightness values. (Eg:- 255 – maximum brightness & 0 – lowest brightness)
+You should see your LED turn on red. If you press the A button on the micro:bit, the color will change to green, and if you press the B button, the color will change to blue.
+
+08. Magnetic Sensor
+====================
+
+8.1 Introduction
+-----------------
+ Magnetic sensors are able to detect magnetic fields and process this information. The outcome on the position, angle and strength (Hall Effect) or the direction (Magneto Resistive) of an applied magnetic field can be converted into specific output signals.
+
+**Learning outcomes:**
+
+•	Using Hall Effect sensor and detect magnetic fields.
+•	Applications of Hall Effect Sensor
 
 
+8.2 Components
+---------------
+•	Magicbit
+•	Soil Moisture Sensor
+
+
+8.3 Theory
+------------
+
+There are actually, two different types of Hall sensors one is Digital Hall sensor and the other is Analog Hall sensor. The digital Hall sensor can only detect if a magnet is present or not (0 or 1) but an analog hall sensor’s output varies based on the magnetic field around the magnet that is it can detect how strong or how far the magnet is. In this project will aim only at the digital Hall sensors for they are the most commonly used ones. [6]
+
+In a Hall Effect sensor, a thin strip of metal has a current applied along it. In the presence of a magnetic field, the electrons in the metal strip are deflected toward one edge, producing a voltage gradient across the short side of the strip (perpendicular to the feed current). 
+
+.. image:: https://github.com/HarshaWeerasinghe/MagicBit_Sensors/blob/master/resources/hall%20sensor/Screenshot_1.png?raw=true
+
+Figure 13: Hall Effect Sensor (Magnetic Sensor)
+
+8.4 Methodology
+----------------
+
+Connect the magnetic sensor to the Magicbit. For this demonstration, we connect the magnetic sensor to D32 pin of the Magicbit.
+After connect the magnetic sensor to the Magicbit connect it to your pc and upload the code below.
+
+
+8.5 Coding
+-----------
+.. code-block:: py
+
+    from machine import Pin
+    import time
+
+    hall_sens = Pin(32, Pin.IN)
+
+    while True:
+       print(hall_sens.value())
+       time.sleep_ms(1000)
+
+
+8.6 Explanation
+----------------
+
+This Magnetic sensor gives digital outputs. Therefor you can open the serial monitor and see the outputs.
+‘1’ for occurred a magnetic field near to the sensor
+‘0’ for there is no any considerable magnetic field near by the sensor
 
 
 Learning Outcomes
