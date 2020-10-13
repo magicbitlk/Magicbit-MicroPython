@@ -175,16 +175,20 @@ Methodology
 
 Coding
 ------
- .. code-block:: py
- from machine import Pin,PWM
- import time
- LED=Pin(16, Pin.OUT)
- pwm = PWM(LED)
- pwm.freq(50)
- while True:
+  .. code-block:: py
+    
+      from machine import Pin,PWM
+      import time
+      LED=Pin(16, Pin.OUT)
+      pwm = PWM(LED)
+      pwm.freq(50)
+      while True:
 	for i in range (0,256,1):
 		pwm.duty(i)
 		time.sleep_ms(500)
+
+
+
 
 Explanation
 ------------
@@ -236,18 +240,16 @@ Methodology
 Coding
 ------
  .. code-block:: py
-from machine import Pin,ADC
-
-
-LED=Pin(16,Pin.OUT)
-
-adc=ADC(Pin(39))
-while True:
-	sensorValue=adc.read()
+    
+     from machine import Pin,ADC
+     LED=Pin(16,Pin.OUT)
+     adc=ADC(Pin(39))
+     while True:
+        sensorValue=adc.read()
 	if sensorValue>2048:
-		LED.off()
+	    LED.off()
 	else:
-		LED.on()
+	    LED.on()
 
 
 
