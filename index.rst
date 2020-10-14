@@ -1,11 +1,11 @@
-==
+
 .. image:: https://github.com/magicbitlk/Magicbit-MicroPython/raw/master/Resources/micropython.png
 
 
 MicroPython is a lean and efficient implementation of the Python 3 programming language that includes a small subset of the Python standard library and is optimised to run on microcontrollers and in constrained environments.
 `Learn more about MicroPython <https://micropython.org/>`_
 
-Magicbit is based on ESP32 which in supported by `MicroPython <http://docs.micropython.org/en/latest/esp32/quickref.html>`_ and `muEditor <https://codewith.mu/>`_
+Magicbit is based on ESP32 which in supported by `MicroPython <http://docs.micropython.org/en/latest/esp32/quickref.html>`_ and `Thonny Editor <https://thonny.org/>`_
 
 ================
 Getting Started
